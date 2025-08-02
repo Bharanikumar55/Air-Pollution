@@ -43,5 +43,3 @@ air_project/
 AQI values are approximate predictions based on available pollutant data. This tool is meant for demonstration and educational use only.
 
 
-## 🗂️ Project Structure
-
