@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Indian Cities AQI Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">🌆 Indian Cities Air Quality Index Map</h2>
+    <div id="map">
+        {{ map_html | safe }}
+    </div>
+</body>
+</html>

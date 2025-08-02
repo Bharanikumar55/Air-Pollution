@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global AQI Viewer</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .map-container { width: 100%; height: 600px; margin-top: 20px; }
+        select { padding: 8px; font-size: 16px; }
+        .chart-container { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Global Air Quality Index (AQI) Viewer</h1>
+
+    <form method="POST">
+        <label for="city">Choose a City:</label>
+        <select name="city" onchange="this.form.submit()">
+            <option value="">-- Select City --</option>
+            {% for city in cities %}
+                <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% if city_info %}
+        <h2>Air Quality Information</h2>
+        <h3>Details for {{ city_info["City"] }} ({{ city_info["Country"] }})</h3>
+        <p>AQI: {{ city_info["AQI Value"] }} | Category: {{ city_info["AQI Category"] }}</p>
+    {% endif %}
+
+    <div class="map-container">
+        {{ map_html|safe }}
+    </div>
+
+    {% if city_info %}
+    <div class="chart-container">
+        <h3>AQI Category Distribution</h3>
+        <img src="{{ url_for('static', filename='pie_chart.png') }}" alt="Pie Chart">
+    </div>
+    {% endif %}
+</body>
+</html>
